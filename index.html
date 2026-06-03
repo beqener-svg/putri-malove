@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Putri </title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+overflow:hidden;
+}
+.page{
+display:none;
+height:100vh;
+padding:30px;
+text-align:center;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+.active{
+display:flex;
+}
+input{
+padding:15px;
+border:none;
+border-radius:10px;
+width:220px;
+text-align:center;
+font-size:18px;
+}
+button{
+padding:14px 28px;
+margin-top:20px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+img{
+max-width:320px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.5);
+}
+.letter{
+max-width:700px;
+line-height:1.8;
+font-size:18px;
+background:rgba(255,255,255,.15);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+h1{
+margin-bottom:15px;
+}
+.heart{
+position:fixed;
+top:-20px;
+animation:fall linear forwards;
+}
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+#noBtn{
+position:relative;
+}
+</style>
+</head>
+<body>
+<!-- PASSWORD -->
+<div class="page active" id="login">
+<h1> Secret Code</h1>
+<p>Only Putri knows this code </p>
+<input id="pass" placeholder="Enter Code">
+<button onclick="checkPass()">Open</button>
+</div>
+<!-- FOTO -->
+<div class="page" id="photo">
+<h1>Hi Putri </h1>
+<img src="gara.jpg">
+<p style="margin-top:20px">
+There's something I want to tell you...
+</p>
+<button onclick="nextPage('letter')">
+Continue →
+</button>
+</div>
+<!-- SURAT -->
+<div class="page" id="letter">
+<div class="letter">
+<h2>For Putri </h2>
+<br>
+<p>
+Sometimes I sit quietly and think about how lucky I am to have you in my life.
+You came unexpectedly, yet somehow you became one of the most important parts of my world.
+With you, love feels safe.
+It feels warm.
+It feels like home.
+You are my comfort on difficult days, my biggest supporter whenever I doubt myself, and the reason behind so many of my smiles.
+The way you care, the way you listen, and the way you stay by my side means more to me than words can ever explain.
+I love how you understand me even when I don't say much.
+I love how you make ordinary moments feel special.
+And most importantly, I love that with you, I can truly be myself.
+Wherever life takes us, I want you to know that my heart will always choose you —
+again and again.
+</p>
+<button onclick="nextPage('question')">
+Continue
+</button>
+</div>
+</div>
+<!-- PERTANYAAN -->
+<div class="page" id="question">
+<h1>Putri </h1>
+<h2 style="margin-top:20px">
+Will You Be My Girlfriend?
+</h2>
+<button onclick="yesAnswer()">
+YES
+</button>
+<button id="noBtn"
+onmouseover="runAway()">
+NO
+</button>
+</div>
+<script>
+function checkPass(){
+const pass =
+document.getElementById('pass').value;
+if(pass === "010908"){
+nextPage("photo");
+}else{
+alert("Wrong code ");
+}
+}
+function nextPage(id){
+document.querySelectorAll('.page')
+.forEach(p=>p.classList.remove('active'));
+document.getElementById(id)
+.classList.add('active');
+}
+function yesAnswer(){
+window.location.href =
+"https://wa.me/6281378597056?text=Aku%20mauuu%20 ";
+}
+function runAway(){
+const btn =
+document.getElementById('noBtn');
+btn.style.left =
+Math.random()*250-125+"px";
+btn.style.top =
+Math.random()*150-75+"px";
+}
+setInterval(()=>{
+let heart =
+document.createElement("div");
+heart.className="heart";
+heart.innerHTML=" ";
+heart.style.left =
+Math.random()*100+"vw";
+heart.style.fontSize =
+(20+Math.random()*20)+"px";
+heart.style.animationDuration =
+(3+Math.random()*4)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{
+heart.remove();
+},7000);
+},250);
+</script>
+</body>
+</html>
